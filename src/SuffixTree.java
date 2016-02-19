@@ -1,4 +1,4 @@
-import java.util.List;
+import java.util.Map;
 
 public class SuffixTree {
 	public static void main(String[] args) {
@@ -11,7 +11,5 @@ public class SuffixTree {
 		public Map<Character, Node> children;
 		public boolean isLeaf;
 	}
-	
-	public static 
 
 }
