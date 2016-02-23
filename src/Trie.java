@@ -104,7 +104,7 @@ public class Trie {
 				return children.get(i).searchInternal(prefix, index + 1);
 			}
 		}
-		return Collections.EMPTY_LIST;
+		return Collections.emptyList();
 	}
 	
 	protected List<String> getDataFromChildren() {
@@ -142,7 +142,7 @@ public class Trie {
 			if(children.containsKey(prefix.charAt(0))) {
 				return children.get(prefix.charAt(0)).search(prefix);
 			}
-			return Collections.EMPTY_LIST;
+			return Collections.emptyList();
 		}
 	}
 }
