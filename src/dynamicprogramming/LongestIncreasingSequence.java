@@ -1,7 +1,5 @@
 package dynamicprogramming;
 
-import java.util.Arrays;
-
 public class LongestIncreasingSequence {
 	
 	public static void main(String[] args) {
@@ -28,7 +26,7 @@ public class LongestIncreasingSequence {
 				}
 			}
 		}
-		System.out.println(Arrays.toString(count));
+		DPUtil.printArray(count);
 		return longestSequence;
 	}
 
