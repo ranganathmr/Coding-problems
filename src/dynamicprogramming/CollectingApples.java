@@ -39,7 +39,5 @@ public class CollectingApples {
 		DPUtil.printMatrix(apples);
 		return apples[apples.length - 1][apples[0].length -1];
 	}
-	
-	
 
 }
