@@ -56,8 +56,8 @@ public class WidthOfTree {
 			if(p == null) {
 				return this;
 			}
-			return new Pair((this.min < p.min ?this.min : p.min),
-							(this.max > p.max ? this.max: p.max));
+			return new Pair((this.min < p.min ? this.min : p.min),
+							(this.max > p.max ? this.max : p.max));
 		}
 	}
 }
