@@ -9,7 +9,6 @@ package trees;
 public class WidthOfTree {
 
 	public static void main(String[] args) {
-		Tree tree = new Tree();
 		int[] numbers = {1,5,3,4,2,14,13,12,11,15,16};
 		TreeNode root = null;
 		for(int i: numbers) {
