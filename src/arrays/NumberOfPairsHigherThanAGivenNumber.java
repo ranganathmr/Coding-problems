@@ -1,6 +1,12 @@
 package arrays;
 
-public class SumToNPairCount {
+/**
+ * Find the number of Pairs whose sum is higher than given number N.
+ * 
+ * @author rmysoreradhakrishna
+ *
+ */
+public class NumberOfPairsHigherThanAGivenNumber {
 	public static void main(String[] args) {
 		int[] a = {1, 2, 40};
 		int N = 42;
