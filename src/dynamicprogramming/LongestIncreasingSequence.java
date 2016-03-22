@@ -3,7 +3,7 @@ package dynamicprogramming;
 public class LongestIncreasingSequence {
 	
 	public static void main(String[] args) {
-		int[] seq = {1,2,4,8,5,6, 3};
+		int[] seq = {1,2,4,8,5,6,3};
 		System.out.println(longestIncreasingSequence(seq));
 	}
 	

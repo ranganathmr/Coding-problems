@@ -10,7 +10,7 @@ public class NumberToWords {
 	
 	public static void main(String[] args) {
 		initMap();
-		int number = 1578632044;
+		int number = 1200457;
 		
 		if(number < 1 || number > 999999999 ){
 			throw new IllegalArgumentException("Sorry");

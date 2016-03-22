@@ -4,7 +4,7 @@ public class LCSubsequence {
 	
 	public static void main(String[] args) {
 		char[] a1 = {'a','b','c','a','d'};
-		char[] a2 = {'a','c','e','a', 'd'};
+		char[] a2 = {'a','c','e','a','d'};
 		// Answer = acd
 		System.out.println(lcSubSequence(a1, a2));
 	}
