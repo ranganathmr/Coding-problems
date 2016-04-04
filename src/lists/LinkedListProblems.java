@@ -2,13 +2,13 @@ package lists;
 import java.util.ArrayList;
 import java.util.List;
 
+import stackandqueues.Stack;
 
 public class LinkedListProblems {
 
 	
 	public static void main(String[] args) {
 		
-		System.out.println(Integer.MAX_VALUE);
 		List<Node> nodes = new ArrayList<Node>() {{
 			add(new Node(1));
 			add(new Node(2));
@@ -26,21 +26,6 @@ public class LinkedListProblems {
 		for( int i = 1; i < nodes.size(); i++) {
 			insert(nodes.get(i), head, i);
 		}
-		System.out.println(head);
-		insert(new Node(100), head, 4);
-		System.out.println(head);
-		
-		for( int i = 0; i < 4; i++) {
-			head = remove(i, head);
-			printList(head); System.out.println();
-		}
-		
-		System.out.println("*********************************************************************************************************");
-		head = reverseRecursive(head);
-		System.out.println(head);
-		System.out.println("*********************************************************************************************************");
-		head = reverseIterative(head);
-		System.out.println(head);;
 	}
 	
 	public static Node insert(Node n, Node head, int atPosition) {

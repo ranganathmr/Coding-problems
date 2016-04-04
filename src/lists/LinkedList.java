@@ -51,6 +51,7 @@ public class LinkedList<T> {
 				|| head.getNext() == null) {
 			// Nothing needs to be done.
 		} else {
+			tail = head;
 			Node<T> header = head;
 			Node<T> one = header.getNext();
 			Node<T> two = one.getNext();
