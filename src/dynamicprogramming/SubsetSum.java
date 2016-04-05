@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class SubsetSum {
 	public static void main(String[] args) {
-		int[] array = { 1, 2, -4, 3, 5, -2, 7, 8, -3 };
+		int[] array = {-2, -3, 4, -1, -2, 1, 5, -3, 8, 7, -5, 4, 5, 8, -4};
 		System.out.println(highestSubSetSum(array));
 	}
 
