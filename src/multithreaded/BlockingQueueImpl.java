@@ -5,7 +5,7 @@ import java.util.List;
 
 public class BlockingQueueImpl<T> implements BlockingQueue<T> {
 
-	private List<T> storage = new LinkedList<>();
+	private volatile List<T> storage = new LinkedList<>();
 	
 	private int limit = 100; // Default
 
