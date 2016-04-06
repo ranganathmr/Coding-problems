@@ -27,8 +27,6 @@ public class OnlineNumberPairs {
 		public boolean isPresentInPairSum(int sum, int i);
 	}
 	
-	
-	
 	private static class NumberImpl implements INumber {
 		
 		private Set<Integer> storage;
