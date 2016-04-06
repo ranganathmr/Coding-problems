@@ -16,36 +16,36 @@ public class BlockingQueueImpl<T> implements BlockingQueue<T> {
 
 	@Override
 	public void put(T element) {
-		synchronized (n) {
-			if (storage.size() == limit) {
-				try {
-					n.wait();
-				} catch (InterruptedException e) {
-					throw new RuntimeException(e);
-				}
-			}
-			
-			/**
-			 * This is a re-entrant lock.
-			 * When the thread waits, the outer monitor/lock is relinquished.
-			 * So its important to obtain lock again, so that we don't overflow queue size.
-			 *    **This may create starvation** (especially when put is called again).
-			 */
+		while (true) {
 			synchronized (n) {
-				boolean isEmpty = storage.isEmpty();
-				if(storage.size() < limit){
-					storage.add(element);
-				} else {
-					put(element);
+				if (storage.size() == limit) {
+					try {
+						n.wait();
+					} catch (InterruptedException e) {
+						throw new RuntimeException(e);
+					}
 				}
-			
-				//WARN: for debugging
-				if(storage.size() > limit) {
-					System.out.println("Exceeded");
-				}
-				
-				if (isEmpty) {
-					n.notifyAll();
+
+				/**
+				 * This is a re-entrant lock. When the thread waits, the outer
+				 * monitor/lock is relinquished. So its important to obtain lock
+				 * again, so that we don't overflow queue size. **This may
+				 * create starvation** (especially when put is called again).
+				 */
+				synchronized (n) {
+					if (storage.size() < limit) {
+						boolean isEmpty = storage.isEmpty();
+						storage.add(element);
+						// WARN: for debugging
+						if (storage.size() > limit) {
+							System.out.println("Exceeded");
+						}
+
+						if (isEmpty) {
+							n.notifyAll();
+						}
+						break;
+					}
 				}
 			}
 		}
@@ -54,25 +54,25 @@ public class BlockingQueueImpl<T> implements BlockingQueue<T> {
 	@Override
 	public T take() {
 		T result = null;
-		synchronized (n) {
-			if (storage.size() == 0) {
-				try {
-					n.wait();
-				} catch (InterruptedException e) {
-					throw new RuntimeException(e);
-				}
-			}
-			
+		while (true) {
 			synchronized (n) {
-				boolean isFull = storage.size() == limit;
-				if(!storage.isEmpty()) {
-					result = storage.remove(0);
-				}else {
-					result = take();
+				if (storage.size() == 0) {
+					try {
+						n.wait();
+					} catch (InterruptedException e) {
+						throw new RuntimeException(e);
+					}
 				}
-			
-				if (isFull) {
-					n.notifyAll();
+
+				synchronized (n) {
+					if (!storage.isEmpty()) {
+						boolean isFull = storage.size() == limit;
+						result = storage.remove(0);
+						if (isFull) {
+							n.notifyAll();
+						}
+						break;
+					}
 				}
 			}
 		}

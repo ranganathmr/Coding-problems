@@ -6,10 +6,10 @@ import java.util.List;
 public class PubSub {
 	
 	private static final int QUEUE_LIMIT = 10;
-	private static final int P_AND_C_LIMIT = 100;
-	private static final int NO_OF_P_AND_C= 100;
-	private static final int PRODUCER_SLEEP = 20;
-	private static final int CONSUMER_SLEEP = 40;
+	private static final int P_AND_C_LIMIT = 200;
+	private static final int NO_OF_P_AND_C= 300;
+	private static final int PRODUCER_SLEEP = 0;
+	private static final int CONSUMER_SLEEP = 4;
 	
 	
 	public static void main(String[] args) throws Exception {
@@ -20,8 +20,8 @@ public class PubSub {
 		List<Thread> list = new LinkedList<>();
 		for(int i = 0; i < NO_OF_P_AND_C; i++){
 			list.add(new Thread(new Producer(queue, P_AND_C_LIMIT)));
-			list.add(new Thread(new Consumer(queue, P_AND_C_LIMIT)));
 		}
+		list.add(new Thread(new Consumer(queue, P_AND_C_LIMIT * NO_OF_P_AND_C)));
 		for(Thread t: list){
 			t.start();
 		}
