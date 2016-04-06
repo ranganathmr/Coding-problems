@@ -6,6 +6,7 @@ import java.util.List;
 public class BlockingQueueImpl<T> implements BlockingQueue<T> {
 
 	private List<T> storage = new LinkedList<>();
+	
 	private int limit = 100; // Default
 
 	private static final Integer n = 10;
@@ -29,8 +30,7 @@ public class BlockingQueueImpl<T> implements BlockingQueue<T> {
 				/**
 				 * This is a re-entrant lock. When the thread waits, the outer
 				 * monitor/lock is relinquished. So its important to obtain lock
-				 * again, so that we don't overflow queue size. **This may
-				 * create starvation** (especially when put is called again).
+				 * again, so that we don't overflow queue size.
 				 */
 				synchronized (n) {
 					if (storage.size() < limit) {
