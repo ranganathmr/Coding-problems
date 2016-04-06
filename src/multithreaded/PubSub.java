@@ -4,14 +4,15 @@ public class PubSub {
 	
 	
 	public static void main(String[] args) throws Exception {
+		System.out.println("Started");
 		BlockingQueue<Integer> queue = new BlockingQueueImpl<Integer>(10);
 		
-		Producer p1 = new Producer(queue, 5);
-		Producer p2 = new Producer(queue, 5);
-		Producer p3 = new Producer(queue, 5);
+		Producer p1 = new Producer(queue, 6);
+		Producer p2 = new Producer(queue, 6);
+		Producer p3 = new Producer(queue, 7);
 		
-		Consumer c1 = new Consumer(queue, 7);
-		Consumer c2 = new Consumer(queue, 8);
+		Consumer c1 = new Consumer(queue, 9);
+		Consumer c2 = new Consumer(queue, 10);
 		
 		Thread t1 = new Thread(p1);
 		Thread t4 = new Thread(c1);
