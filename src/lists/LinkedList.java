@@ -7,9 +7,7 @@ public class LinkedList<T> {
 	private Node<T> tail;
 	
 	public void insertAtHead(T data) {
-		Node<T> node = new Node<T>();
-		node.setData(data);
-		node.setNext(head);
+		Node<T> node = new Node<T>(data, head);
 		head = node;
 		if(tail == null) {
 			tail = head;
@@ -17,9 +15,7 @@ public class LinkedList<T> {
 	}
 	
 	public void insertAtTail(T data) {
-		Node<T> node = new Node<T>();
-		node.setData(data);
-		node.setNext(null);
+		Node<T> node = new Node<T>(data);
 		if(tail != null) {
 			tail.setNext(node);
 		} 
@@ -74,32 +70,27 @@ public class LinkedList<T> {
 	
 	private void print(Node<T> node) {
 		if(node != null) {
-			System.out.print(node.getData() + " ");
+			System.out.print("[" + node.getData() + "]-->");
 			print(node.getNext());
 		}
 	}
 	
-	public static class Node<T> {
-		
-		private T data;
-		
-		private Node<T> next;
-
-		public T getData() {
-			return data;
-		}
-
-		public void setData(T data) {
-			this.data = data;
-		}
-
-		public Node<T> getNext() {
-			return next;
-		}
-
-		public void setNext(Node<T> next) {
-			this.next = next;
-		}
+	public Node<T> head(){
+		return head;
 	}
-
+	
+	public Node<T> tail(){
+		return tail;
+	}
+	
+	public static <T> LinkedList<T> build(T[] array){
+		if(array == null) {
+			return null;
+		}
+		LinkedList<T> list = new LinkedList<>();
+		for(T i: array) {
+			list.insertAtTail(i);
+		}
+		return list;
+	}
 }
