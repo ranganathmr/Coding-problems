@@ -49,7 +49,7 @@ public class GraphNode<T> {
 		GraphNode<T> newNode = new GraphNode<T>(node.getData());
 		map.put(node, newNode);
 		for(GraphNode<T> neighbor: node.getNeighbours()) {
-			node.addNeighbour(deepCopyInternal(neighbor, map));
+			newNode.addNeighbour(deepCopyInternal(neighbor, map));
 		}
 		return newNode;
 	}
