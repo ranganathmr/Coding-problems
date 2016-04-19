@@ -9,7 +9,7 @@ public class Speedometer {
 	public static void speedoMeter() {
 		int[] array = {0,1,2,3,4,5,6,7,8,9};
 		
-		int n = 4;
+		int n = 2;
 		int noOfIterations = 1;
 		for(int i = 0; i < n; i++){
 			noOfIterations *= array.length;

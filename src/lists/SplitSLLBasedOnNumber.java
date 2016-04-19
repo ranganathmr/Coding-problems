@@ -25,30 +25,16 @@ public class SplitSLLBasedOnNumber {
 		while(head != null){
 			next = head.getNext();
 			if(head.getData() == n){
-				if(numbers == null){
-					numbers = new Node<Integer>(head.getData());
-				} else {
-					head.setNext(numbers);
-					numbers = head;
-				}
+				head.setNext(numbers);
+				numbers = head;
 			}
 			if(head.getData() > n){
-				if(bigger == null){
-					bigger = new Node<Integer>(head.getData());
-				} else {
-					head.setNext(bigger);
-					bigger = head;
-				}
-
+				head.setNext(bigger);
+				bigger = head;
 			}
 			if(head.getData() < n){
-				if(smaller == null){
-					smaller = new Node<Integer>(head.getData());
-				} else {
-					head.setNext(smaller);
-					smaller = head;
-				}
-
+				head.setNext(smaller);
+				smaller = head;
 			}
 			head = next;
 		}
