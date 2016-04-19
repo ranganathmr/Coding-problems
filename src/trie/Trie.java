@@ -48,11 +48,9 @@ public class Trie {
 			return;
 		}
 		if(index == str.length() - 1) {
-			this.character = str.charAt(index);
 			this.data = str;
 			return;
 		}
-		this.character = str.charAt(index);
 		char c = str.charAt(index + 1);
 		Trie child = children.get(c);
 		if(child == null) {
@@ -92,7 +90,7 @@ public class Trie {
 	protected List<String> searchInternal(String prefix, int index){
 		List<String> matches = new ArrayList<String>();
 		if(index == prefix.length() - 1) {
-			if(this.data != null && this.data.equals(prefix)) {
+			if(this.data != null) {
 				matches.add(this.data);
 			}
 			for(Trie child: children.values()) {

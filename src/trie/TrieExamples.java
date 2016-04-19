@@ -1,7 +1,4 @@
 package trie;
-import java.util.Collections;
-import java.util.List;
-
 
 public class TrieExamples {
 	
@@ -23,5 +20,4 @@ public class TrieExamples {
 		t.addData("crocodile");
 		System.out.println(t.search("crab"));
 	}
-
 }
